@@ -1,132 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stromboli Pizza | {{TAGLINE}}</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stromboli Pizza</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --bg:#0b0f14;
-      --card:#121925;
-      --text:#eaf0ff;
-      --muted:rgba(234,240,255,.75);
-      --border:rgba(255,255,255,.10);
-      --accent:#d32f2f;
-      --radius:20px;
-      --max:1100px;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.5;
-    }
-    img{max-width:100%;display:block}
-    a{text-decoration:none;color:inherit}
-
-    .topbar{
-      position:sticky;top:0;z-index:10;
-      backdrop-filter:blur(10px);
-      background:rgba(11,15,20,.7);
-      border-bottom:1px solid var(--border);
-    }
-    .topbar-inner{
-      max-width:var(--max);
-      margin:auto;
-      padding:12px 20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-    }
-    .brand{display:flex;gap:12px;align-items:center}
-    .brand img{
-      width:48px;height:48px;
-      border-radius:12px;
-      object-fit:contain;
-      background:#fff;
-      padding:6px;
-    }
-
-    .btn{
-      padding:10px 18px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      font-weight:600;
-      background:rgba(255,255,255,.06);
-    }
-    .btn-primary{
-      background:var(--accent);
-      border-color:transparent;
-    }
-
-    .hero{
-      max-width:var(--max);
-      margin:24px auto;
-      border-radius:var(--radius);
-      overflow:hidden;
-      border:1px solid var(--border);
-    }
-    .hero-media{
-      min-height:360px;
-      background:
-        linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.65)),
-        url("assets/photos/hero.jpg") center/cover no-repeat;
-      display:flex;
-      align-items:flex-end;
-      padding:24px;
-    }
-    h1{font-size:clamp(2rem,4vw,3rem)}
-    .subtitle{color:var(--muted);margin-top:6px}
-
-    section{max-width:var(--max);margin:24px auto;padding:0 20px}
-    footer{text-align:center;color:var(--muted);padding:40px 0}
-  </style>
+  <link rel="stylesheet" href="https://avco-premier.github.io/restaurant-engine/engine.css">
 </head>
-
 <body>
   <div class="topbar">
     <div class="topbar-inner">
       <div class="brand">
-        <!-- TODO FLOW 2: Add official Stromboli logo -->
-        <img src="assets/logo/logo.png" alt="Stromboli Pizza logo">
-        <strong>Stromboli Pizza</strong>
+        <img id="logo" alt="logo">
+        <strong id="name">Restaurant Name</strong>
       </div>
-
-      <!-- TODO FLOW 2: Replace order URL with live AvcoPremier link -->
-      <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Order Online</a>
+      <a class="btn btn-primary" id="orderBtnTop" href="#" target="_blank" rel="noopener">Order Online</a>
     </div>
   </div>
 
-  <div class="hero">
-    <!-- TODO FLOW 2: Replace hero image with interior photo -->
-    <div class="hero-media">
-      <div>
-        <h1>Classic Italian Pizza</h1>
-        <p class="subtitle">Serving since 1976</p>
+  <div class="wrap hero">
+    <div id="error"></div>
+
+    <div class="hero-card">
+      <div class="hero-media">
+        <div>
+          <h1 id="taglineHeadline">Headline</h1>
+          <p class="subtitle" id="taglineSub">Subheadline</p>
+          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn btn-primary" id="orderBtnHero" href="#" target="_blank" rel="noopener">Order on AvcoPremier</a>
+            <a class="btn" href="#visit">Visit</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <section>
+          <div class="grid">
+            <div class="card">
+              <h2 style="font-size:1.35rem;letter-spacing:-0.01em;margin-bottom:10px;">House Favorites</h2>
+              <p class="subtitle">Order the full menu online.</p>
+            </div>
+
+            <div class="card" id="visit">
+              <h2 style="font-size:1.35rem;letter-spacing:-0.01em;margin-bottom:10px;">Visit</h2>
+              <p class="subtitle"><b>Address:</b> <span id="address"></span></p>
+              <p class="subtitle"><b>Phone:</b> <a id="phoneLink" href="#"><span id="phoneDisplay"></span></a></p>
+            </div>
+          </div>
+        </section>
+
+        <footer>© <span id="year"></span> <span id="name"></span></footer>
       </div>
     </div>
   </div>
-
-  <section>
-    <!-- TODO FLOW 2: Confirm address / phone / hours -->
-    <h2>House Favorites</h2>
-    <p class="subtitle">Order the full menu online.</p>
-  </section>
-
-  <footer>
-    © <span id="year"></span> Stromboli Pizza
-  </footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+    window.SITE_CONFIG_URL = "./site.json";
   </script>
+  <script src="https://avco-premier.github.io/restaurant-engine/engine.js"></script>
 </body>
-
 </html>
