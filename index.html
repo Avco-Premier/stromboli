@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{RESTAURANT_NAME}} | {{TAGLINE}}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#121925;
+      --text:#eaf0ff;
+      --muted:rgba(234,240,255,.75);
+      --border:rgba(255,255,255,.10);
+      --accent:#d32f2f;
+      --radius:20px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+
+    .topbar{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter:blur(10px);
+      background:rgba(11,15,20,.7);
+      border-bottom:1px solid var(--border);
+    }
+    .topbar-inner{
+      max-width:var(--max);
+      margin:auto;
+      padding:12px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand img{
+      width:48px;height:48px;
+      border-radius:12px;
+      object-fit:contain;
+      background:#fff;
+      padding:6px;
+    }
+
+    .btn{
+      padding:10px 18px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      font-weight:600;
+      background:rgba(255,255,255,.06);
+    }
+    .btn-primary{
+      background:var(--accent);
+      border-color:transparent;
+    }
+
+    .hero{
+      max-width:var(--max);
+      margin:24px auto;
+      border-radius:var(--radius);
+      overflow:hidden;
+      border:1px solid var(--border);
+    }
+    .hero-media{
+      min-height:360px;
+      background:
+        linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.65)),
+        url("assets/photos/hero.jpg") center/cover no-repeat;
+      display:flex;
+      align-items:flex-end;
+      padding:24px;
+    }
+    h1{font-size:clamp(2rem,4vw,3rem)}
+    .subtitle{color:var(--muted);margin-top:6px}
+
+    section{max-width:var(--max);margin:24px auto;padding:0 20px}
+    footer{text-align:center;color:var(--muted);padding:40px 0}
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img src="assets/logo/logo.png" alt="{{RESTAURANT_NAME}} logo">
+        <strong>{{RESTAURANT_NAME}}</strong>
+      </div>
+      <a class="btn btn-primary" href="{{ORDER_URL}}" target="_blank">Order Online</a>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-media">
+      <div>
+        <h1>{{TAGLINE_HEADLINE}}</h1>
+        <p class="subtitle">{{TAGLINE_SUB}}</p>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <h2>House Favorites</h2>
+    <p class="subtitle">Order the full menu online.</p>
+  </section>
+
+  <footer>
+    © <span id="year"></span> {{RESTAURANT_NAME}}
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
