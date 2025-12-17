@@ -1,0 +1,13 @@
+{
+    "name": "Stromboli Pizza",
+    "taglineHeadline": "Classic Italian Pizza since 1976",
+    "taglineSub": "Rustic spot with a few tables for pizza, slices, calzones & subs served at a counter or delivered",
+    "orderUrl": "https://stromboli.avcoindustries.com/order-now",
+    "phoneDisplay": "(212) 673-3691",
+    "phoneRaw": "12126733691",
+    "address": "83 St Marks Pl, New York, NY 10003",
+    "accent": "#304873",
+    "logo": "./assets/logo.png",
+    "hero": "./assets/hero.jpg"
+  }
+  
